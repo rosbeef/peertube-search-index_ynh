@@ -22,7 +22,7 @@ ynh_install_nodejs --nodejs_version="$NODEJS_VERSION"
 #=================================================
 ynh_script_progression --message="Setting up source files..."
 
-_git_clone_or_pull "$install_dir/source"
+_git_clone_or_pull "$install_dir/sources"
 chmod -R o-rwx "$install_dir"
 chown -R "$app:$app" "$install_dir"
 
