@@ -16,22 +16,13 @@ ynh_script_progression --message="Installing NodeJS..."
 
 ynh_install_nodejs --nodejs_version="$NODEJS_VERSION"
 
-#=================================================
-# START MEILISEARCH
-#=================================================
-ynh_script_progression --message="Starting meilisearch..."
-
-# Fix permissions in case of remove/reinstall
-
-systemctl enable elasticsearch.service --quiet
-systemctl start elasticsearch.service
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression --message="Setting up source files..."
 
-_git_clone_or_pull "$install_dir"
+_git_clone_or_pull "$install_dir/source"
 chmod -R o-rwx "$install_dir"
 chown -R "$app:$app" "$install_dir"
 
